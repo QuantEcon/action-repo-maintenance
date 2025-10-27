@@ -1,5 +1,9 @@
 # QuantEcon Repository Maintenance Action
 
+[![GitHub](https://img.shields.io/badge/github-QuantEcon%2Faction--repo--maintenance-blue?logo=github)](https://github.com/QuantEcon/action-repo-maintenance)
+[![Python](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 > ⚠️ **CURRENTLY IN DEVELOPMENT** - This action is under active development. Features and APIs may change as we iterate on the implementation.
 
 A GitHub Action for automating maintenance tasks across QuantEcon repositories.
