@@ -1,0 +1,74 @@
+# Configuration Example for QuantEcon Repository Maintenance Action
+#
+# Copy this file to config.yml and update with your settings.
+# Never commit config.yml with real credentials!
+
+# Backup configuration
+backup:
+  # Enable or disable backup task
+  enabled: true
+  
+  # GitHub organization to backup
+  organization: "quantecon"
+  
+  # Repository name patterns (Python regex)
+  # Matches repositories whose names match any of these patterns
+  patterns:
+    - "lecture-.*"              # Matches: lecture-python.myst, lecture-julia, etc.
+    - "quantecon-.*"            # Matches: quantecon-notebooks-python, etc.
+    - "example-repo"            # Exact match for specific repo
+  
+  # AWS S3 configuration
+  s3:
+    # S3 bucket name (must exist)
+    bucket: "quantecon-repo-backups"
+    
+    # AWS region
+    region: "us-east-1"
+    
+    # Prefix for all backup objects in the bucket
+    # Backups will be stored as: s3://{bucket}/{prefix}/{repo-name}/{repo-name}-{date}.tar.gz
+    prefix: "backups/"
+    
+  # Backup schedule (for reference, actual schedule is in .github/workflows/backup.yml)
+  schedule:
+    # Default: Weekly on Sunday at 2 AM UTC
+    cron: "0 2 * * 0"
+  
+  # Retention settings (future feature)
+  retention:
+    # Keep daily backups for this many days
+    daily_days: 30
+    
+    # Keep weekly backups for this many weeks
+    weekly_weeks: 12
+    
+    # Keep monthly backups for this many months
+    monthly_months: 12
+
+# Future feature: Repository health checks
+health_checks:
+  enabled: false
+  checks:
+    - "outdated_dependencies"
+    - "missing_license"
+    - "stale_branches"
+
+# Future feature: Issue/PR automation
+automation:
+  enabled: false
+  
+  # Auto-close stale issues
+  stale_issues:
+    enabled: false
+    days_before_stale: 90
+    days_before_close: 7
+    
+  # Auto-label PRs
+  auto_label:
+    enabled: false
+
+# Logging configuration
+logging:
+  level: "INFO"  # DEBUG, INFO, WARNING, ERROR
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
